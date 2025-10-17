@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaker Gallery</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<style>
+body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 50px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.title-area { text-align: center; margin-bottom: 40px; }
+.title-area h2 { font-size: 32px; color: #333; }
+.swiper { padding-bottom: 50px; }
+.swiper-slide { text-align: center; background: #fff; border-radius: 15px; padding: 20px; transition: transform 0.3s; }
+.swiper-slide:hover { transform: translateY(-5px); }
+.team-img { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; }
+.team-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; cursor: pointer; }
+.team-img img:hover { transform: scale(1.1); }
+.team-name { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
+.team-degi { font-size: 14px; color: #555; }
+.swiper-navigation { text-align: center; margin-top: 20px; font-weight: bold; font-size: 16px; }
+.swiper-button-prev, .swiper-button-next { color: #333; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title-area">
+        <h2>Our Speakers</h2>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="speaker-wrapper">
+            <!-- Slides سيتم توليدها بالـ JS -->
+        </div>
+
+        <!-- أزرار التنقل -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <div class="swiper-navigation">
+        <span id="current-slide">1</span> / <span id="total-slides">0</span>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+// بيانات المتحدثين
+const speakers = [
+    {name: "Michael Johnson", role: "CEO, Events BD", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d", linkedin: "https://www.linkedin.com/in/michaeljohnson"},
+    {name: "Sarah Williams", role: "Marketing Director", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330", linkedin: "https://www.linkedin.com/in/sarahwilliams"},
+    {name: "David Chen", role: "Event Coordinator", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e", linkedin: "https://www.linkedin.com/in/davidchen"},
+    {name: "Jennifer Lopez", role: "Creative Director", img: "https://images.unsplash.com/photo-1552058544-f2b08422138a", linkedin: "https://www.linkedin.com/in/jenniferlopez"},
+    {name: "Robert Kim", role: "Technical Lead", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a", linkedin: "https://www.linkedin.com/in/robertkim"},
+    {name: "Emily Brown", role: "HR Manager", img: "https://images.unsplash.com/photo-1603415526960-f3e1ff9d4b3e", linkedin: "https://www.linkedin.com/in/emilybrown"},
+    {name: "John Smith", role: "Software Engineer", img: "https://images.unsplash.com/photo-1502764613149-7f1d229e230f", linkedin: "https://www.linkedin.com/in/johnsmith"},
+    {name: "Anna Lee", role: "Product Manager", img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e", linkedin: "https://www.linkedin.com/in/annalee"},
+    {name: "Matthew Jones", role: "UX Designer", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2", linkedin: "https://www.linkedin.com/in/matthewjones"},
+    {name: "Natalie Rivera", role: "Content Strategist", img: "https://images.unsplash.com/photo-1545992333-5a47b2f6b2f0", linkedin: "https://www.linkedin.com/in/natalierivera"},
+    {name: "Jason Williams", role: "Operations Manager", img: "https://images.unsplash.com/photo-1502767089025-6572583495f4", linkedin: "https://www.linkedin.com/in/jasonwilliams"},
+    {name: "Olivia Davis", role: "Marketing Analyst", img: "https://images.unsplash.com/photo-1502764613149-7f1d229e230f", linkedin: "https://www.linkedin.com/in/oliviadavis"}
+];
+
+// توليد الشرائح
+const wrapper = document.getElementById('speaker-wrapper');
+speakers.forEach(s => {
+    const slide = document.createElement('div');
+    slide.classList.add('swiper-slide');
+    slide.innerHTML = `
+        <div class="team-style1">
+            <a href="${s.linkedin}" target="_blank">
+                <div class="team-img"><img src="${s.img}" alt="${s.name}"></div>
+            </a>
+            <h4 class="team-name">${s.name}</h4>
+            <span class="team-degi">${s.role}</span>
+        </div>
+    `;
+    wrapper.appendChild(slide);
+});
+
+document.getElementById('total-slides').textContent = speakers.length;
+
+// تهيئة Swiper بدون autoplay
+const swiper = new Swiper(".mySwiper", {
+    slidesPerView: 4,
+    spaceBetween: 15,
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        0: { slidesPerView: 1 },
+        480: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 }
+    }
+});
+
+// تحديث العدّاد
+swiper.on('slideChange', () => {
+    const currentIndex = (swiper.realIndex % speakers.length) + 1;
+    document.getElementById('current-slide').textContent = currentIndex;
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

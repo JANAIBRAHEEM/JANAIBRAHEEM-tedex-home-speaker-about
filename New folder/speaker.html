@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <style>
+        /* Root variables */
+        :root {
+            --theme-color: #7409f6;
+            --sec-color: #000000;
+            --title-color: #272e39;
+            --body-color: #565656;
+            --smoke-color: #f6f6f6;
+            --border-color: #ececec;
+            --white-color: #ffffff;
+            --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --title-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --main-container: 1320px;
+            --section-space: 120px;
+            --section-space-mobile: 80px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--body-font);
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--body-color);
+            line-height: 26px;
+            overflow-x: hidden;
+        }
+
+        .space-top { padding-top: var(--section-space); }
+        .space-extra-bottom { padding-bottom: var(--section-space); }
+
+        @media (max-width: 991px) {
+            .space-top { padding-top: var(--section-space-mobile); }
+            .space-extra-bottom { padding-bottom: var(--section-space-mobile); }
+        }
+
+        .container { max-width: var(--main-container); margin: 0 auto; padding: 0 15px; }
+        .row { display:flex; flex-wrap:wrap; margin:0 -15px; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-end { align-items: flex-end; }
+        .col-lg-5, .col-auto { padding: 0 15px; }
+        .col-lg-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+        .col-auto { flex: 0 0 auto; width:auto; max-width:100%; }
+
+        .title-area { margin-bottom:50px; }
+        .sec-subtitle { display:block; font-size:18px; font-weight:600; color:var(--theme-color); margin-bottom:10px; padding-left:15px; position:relative; }
+        .sec-subtitle:before { content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); height:10px; width:10px; background: var(--theme-color); border-radius:50%; }
+        .sec-title { font-size:48px; font-weight:700; color: var(--title-color); margin-bottom:0; }
+        @media (max-width:1199px) { .sec-title { font-size:36px; } }
+        @media (max-width:767px) { .sec-title { font-size:28px; } }
+
+        .sec-btns { display:flex; gap:15px; }
+        .vs-btn {
+            display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 25px;
+            background: var(--white-color); color: var(--theme-color); border: 2px solid var(--theme-color);
+            border-radius:10px; font-weight:600; cursor:pointer; transition: all 0.3s ease;
+        }
+        .vs-btn:hover {
+            background: var(--theme-color); color: var(--white-color); transform:translateY(-3px);
+            box-shadow:0 10px 20px rgba(116,9,246,0.2);
+        }
+
+        /* Swiper */
+        .swiper { width:100%; padding:30px 0; }
+        .swiper-slide { display:flex; justify-content:center; }
+
+        .team-style1 {
+            background-color: var(--white-color); padding:40px 30px; border-radius:20px;
+            box-shadow:0px 3px 18px rgba(0,0,0,0.03); text-align:center; position:relative; transition: all 0.4s ease;
+        }
+        .team-style1:hover { background-color: var(--smoke-color); transform:translateY(-10px); }
+
+        .team-img { width:240px; height:240px; margin:0 auto 30px; border-radius:50%; overflow:hidden; border:10px solid var(--white-color); position:relative; }
+        .team-img img { width:100%; height:100%; object-fit:cover; transition: all 0.5s ease; }
+        .team-style1:hover .team-img img { transform:scale(1.1); }
+
+        .team-name { font-size:24px; font-weight:700; color:var(--title-color); margin-bottom:4px; }
+        .team-degi { font-size:16px; color:var(--body-color); }
+
+        .team-social ul { list-style:none; padding:0; display:flex; justify-content:center; gap:10px; margin-top:15px; }
+        .team-social ul li a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; color:var(--white-color); background-color:var(--theme-color); transition:all 0.3s ease; }
+        .team-social ul li a:hover { background-color: var(--sec-color); transform:rotate(360deg); }
+
+        /* Counter */
+        .swiper-counter { text-align:center; font-size:18px; font-weight:600; margin-bottom:15px; color: var(--title-color); }
+
+        @media (max-width:991px) { .team-img { width:200px; height:200px; } .team-name { font-size:20px; } }
+        @media (max-width:767px) { .sec-btns { justify-content:center; } .team-style1 { padding:30px 20px; } }
+    </style>
+</head>
+
+<body>
+
+    <section class="space-top space-extra-bottom">
+        <div class="container">
+            <div class="row justify-content-between align-items-end">
+                <div class="col-lg-5">
+                    <div class="title-area">
+                        <span class="sec-subtitle">Team Member</span>
+                        <h2 class="sec-title">Get A New Experience With Our Speakers</h2>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="sec-btns">
+                        <button class="vs-btn swiper-button-prev-custom"><i class="fas fa-arrow-left"></i> Prev</button>
+                        <button class="vs-btn swiper-button-next-custom">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Counter -->
+            <div class="swiper-counter" id="swiper-counter">1 / 5</div>
+
+            <!-- Swiper slider -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    <!-- Speaker 1 -->
+                    <div class="swiper-slide">
+                        <div class="team-style1">
+                            <div class="team-img">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Michael Johnson">
+                            </div>
+                            <h4 class="team-name">Michael Johnson</h4>
+                            <span class="team-degi">CEO, Events BD</span>
+                            <div class="team-social">
+                                <ul>
+                                    <li><a href="https://www.linkedin.com/in/michaeljohnson" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 2 -->
+                    <div class="swiper-slide">
+                        <div class="team-style1">
+                            <div class="team-img">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Sarah Williams">
+                            </div>
+                            <h4 class="team-name">Sarah Williams</h4>
+                            <span class="team-degi">Marketing Director</span>
+                            <div class="team-social">
+                                <ul>
+                                    <li><a href="https://www.linkedin.com/in/sarahwilliams" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 3 -->
+                    <div class="swiper-slide">
+                        <div class="team-style1">
+                            <div class="team-img">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="David Chen">
+                            </div>
+                            <h4 class="team-name">David Chen</h4>
+                            <span class="team-degi">Event Coordinator</span>
+                            <div class="team-social">
+                                <ul>
+                                    <li><a href="https://www.linkedin.com/in/davidchen" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 4 -->
+                    <div class="swiper-slide">
+                        <div class="team-style1">
+                            <div class="team-img">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=500&q=80" alt="Jennifer Lopez">
+                            </div>
+                            <h4 class="team-name">Jennifer Lopez</h4>
+                            <span class="team-degi">Creative Director</span>
+                            <div class="team-social">
+                                <ul>
+                                    <li><a href="https://www.linkedin.com/in/jenniferlopez" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 5 -->
+                    <div class="swiper-slide">
+                        <div class="team-style1">
+                            <div class="team-img">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Robert Kim">
+                            </div>
+                            <h4 class="team-name">Robert Kim</h4>
+                            <span class="team-degi">Technical Lead</span>
+                            <div class="team-social">
+                                <ul>
+                                    <li><a href="https://www.linkedin.com/in/robertkim" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
+                navigation: {
+                    nextEl: ".swiper-button-next-custom",
+                    prevEl: ".swiper-button-prev-custom",
+                },
+                breakpoints: {
+                    320: { slidesPerView: 1, spaceBetween: 20 },
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    992: { slidesPerView: 3, spaceBetween: 30 }
+                }
+            });
+
+            // Counter
+            const counter = document.getElementById('swiper-counter');
+            const totalSlides = 5; // عدد المتحدثين الحقيقيين
+            counter.textContent = `${swiper.realIndex + 1} / ${totalSlides}`;
+
+            swiper.on('slideChange', function () {
+                counter.textContent = `${swiper.realIndex + 1} / ${totalSlides}`;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

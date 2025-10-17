@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TEDx — Event Overview</title>
+<style>
+  :root{
+    --accent:#e62b1e;
+    --accent-hover:#c1221a;
+    --dark:#111;
+    --muted:#555;
+    --bg:#f8f9fb;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--dark);line-height:1.6;font-size:16px}
+  .container{max-width:1200px;margin:auto;padding:40px 20px}
+
+  /* Hero Section */
+  .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:30px;margin-bottom:60px}
+  .hero-text{flex:1;min-width:300px}
+  .hero-text h1{font-size:42px;margin-bottom:20px;color:var(--accent)}
+  .hero-text p{font-size:18px;color:var(--muted);margin-bottom:20px}
+  .hero-text .cta{background:var(--accent);color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold}
+  .hero-img{flex:1;min-width:300px;text-align:center}
+  .hero-img img{max-width:100%;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+
+  /* Info Section */
+  .info-section{margin-bottom:60px}
+  .info-section h2{font-size:32px;margin-bottom:20px;color:var(--dark);text-align:center}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.06); display:flex; align-items:center; gap:12px}
+  .card img{width:60px; height:60px; object-fit:cover; border-radius:8px;}
+  .card h3{margin-bottom:12px;color:var(--accent)}
+  .card p{color:var(--muted)}
+
+  /* Organizers */
+  .organizers{margin-bottom:60px}
+  .organizers h2{text-align:center;margin-bottom:20px;font-size:32px}
+  .organizer-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+  }
+  .organizer{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+    width:320px;
+  }
+  .organizer-img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .organizer h4{margin-bottom:6px;color:var(--accent)}
+  .organizer p{color:var(--muted);font-size:14px}
+
+  /* Gallery */
+  .gallery-section{margin-bottom:60px}
+  .gallery-section h2{text-align:center;margin-bottom:20px;font-size:32px}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  .gallery-item img:hover {
+    transform: scale(1.03);
+  }
+  .img-label {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .img-label:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+  }
+
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:1000}
+  .modal.open{display:flex}
+  .modal img{max-width:90%;max-height:80%;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+
+  /* Footer */
+  footer{padding:20px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid #ddd}
+
+  /* Fade-in */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero -->
+  <section class="hero fade-in">
+    <div class="hero-text">
+      <h1>TEDx [Event Name] 2025</h1>
+      <p>Join us for an independently organized TED event in [City], where innovators, dreamers, and change-makers share powerful ideas worth spreading.</p>
+      <a href="#tickets" class="cta">Get Tickets</a>
+    </div>
+    <div class="hero-img">
+      <img src="Untitled design2.jpg" alt="TEDx Stage">
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="info-section fade-in">
+    <h2>About the Event</h2>
+    <div class="info-grid">
+      <div class="card fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Overview Icon">
+        <div>
+          <h3>Overview</h3>
+          <p>TEDx [Event Name] is a curated day of live talks and performances featuring thought leaders, creators, and changemakers from diverse fields.</p>
+        </div>
+      </div>
+      <div class="card fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Mission Icon">
+        <div>
+          <h3>Mission</h3>
+          <p>Our mission is to amplify ideas that inspire action, foster innovation, and create stronger communities through open dialogue.</p>
+        </div>
+      </div>
+      <div class="card fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Audience Icon">
+        <div>
+          <h3>Audience</h3>
+          <p>From students and professionals to community leaders, this event welcomes anyone passionate about learning, growth, and impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizers -->
+  <section class="organizers fade-in">
+    <h2>Meet the Organizers</h2>
+    <div class="organizer-list">
+      <div class="organizer fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Alice Ahmed" class="organizer-img">
+        <div>
+          <h4>Alice Ahmed</h4>
+          <p>Lead Curator — experienced in designing impactful community events.</p>
+        </div>
+      </div>
+      <div class="organizer fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Mohammad Barakat" class="organizer-img">
+        <div>
+          <h4>Mohammad Barakat</h4>
+          <p>Community Manager — builds partnerships and coordinates volunteers.</p>
+        </div>
+      </div>
+      <div class="organizer fade-in">
+        <img src="Screenshot 2025-09-22 013942.png" alt="Sara Rashed" class="organizer-img">
+        <div>
+          <h4>Sara Rashed</h4>
+          <p>Speaker Curator — responsible for speaker selection and storytelling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery-section fade-in">
+    <h2>Gallery</h2>
+    <div class="gallery" id="gallery">
+      <div class="gallery-item fade-in">
+        <img src="Audience.jpeg" alt="Audience">
+        <button class="img-label">Audience</button>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="speeker.jpeg" alt="Speaker">
+        <button class="img-label">Speaker</button>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="Stage.jpeg" alt="Stage">
+        <button class="img-label">Stage</button>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="Volunteers.jpeg" alt="Volunteers">
+        <button class="img-label">Volunteers</button>
+      </div>
+    </div>
+  </section>
+
+<div class="modal" id="modal">
+  <img src="" alt="Expanded view" id="modalImg" />
+</div>
+
+<script>
+  // Gallery Modal
+  const gallery=document.getElementById('gallery');
+  const modal=document.getElementById('modal');
+  const modalImg=document.getElementById('modalImg');
+  gallery.addEventListener('click',e=>{
+    const img=e.target.closest('img');
+    if(!img)return;
+    modalImg.src=img.src;
+    modal.classList.add('open');
+  });
+  modal.addEventListener('click',()=>modal.classList.remove('open'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+
+  // Fade-in on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
+</body>
+</html>
